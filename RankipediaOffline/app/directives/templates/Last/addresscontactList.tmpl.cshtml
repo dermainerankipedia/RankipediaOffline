@@ -1,0 +1,120 @@
+﻿
+<div class="row">
+    <div class="col-sm-11  col-sm-offset-0">
+        <div ng-if="editable" class="pull-right fa-pull-right btn-group" auto-close="disabled" uib-dropdown is-open="newItem.isEditing">
+            <button class="btn btn-xs btn-primary" style="margin-right: -5px;" title="add" uib-dropdown-toggle ng-click="beforecreate({$event: $event})">
+                <i class="fa fa-plus"></i>
+                <span class="caret"></span>
+            </button>
+            <div class="uib-dropdown-menu" role="menu" style="padding-top: 0; padding-left: 4px; padding-right: 4px; padding-bottom: 0; width: 250px">
+                <div class="form-horizontal" role="form">
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label for="Address" class="col-xs-2 control-label sr-only">Address</label>
+                        <div class="col-xs-12">
+                            <textarea type="text" class="form-control input-sm" name="Address" placeholder="Address" ng-model="newItem.address"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label for="City" class="col-xs-2 control-label sr-only">City</label>
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control input-sm" name="City" placeholder="City" ng-model="newItem.city" />
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label for="State" class="col-xs-2 control-label sr-only">State</label>
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control input-sm" name="State" placeholder="State" ng-model="newItem.state" />
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label for="zipCode" class="col-xs-2 control-label sr-only">Zip Code</label>
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control input-sm" name="zipCode" placeholder="Zip Code" ng-model="newItem.zipCode" />
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label for="addressTypeName" class="col-xs-2 control-label sr-only">address Type</label>
+                        <div class="col-xs-12">
+                            <select class="form-control input-sm" required ng-model="newItem.adressType"
+                                    ng-options="option.id as option.name for option in types"
+                                    name="addressTypeName"></select>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 8px;">
+                        <div class="btn-group col-xs-12">
+                            <a class="btn btn-info btn-xs btn-primary" ng-click="create({item: newItem, $event: $event})">Save</a>
+                            <a class="btn btn-info btn-xs btn-primary" ng-click="cancelcreate({item: newItem, $event: $event});">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12  col-sm-offset-0">
+        <div class="list-group contact-list-group">
+            <div ng-repeat="item in items" class="list-group-item contact-list-group-item  clearfix">
+                <div class="contact-list-group-div-image">
+                    <span class="fa {{item.leftSectionFontAwesomeIconClass}}"> </span>
+                </div>                
+                <div ng-if="editable" class="pull-right fa-pull-right btn-group" auto-close="disabled" >
+                    <button type="button" class="btn btn-primary btn-xs" ng-click="beforeupdate({item: item})">
+                        <i class="fa fa-edit"></i>
+                        <span class="caret"></span>
+                    </button>
+                    <a class="btn btn-xs btn-primary" title="Delete" ng-click="delete({item: item, $event: $event})">
+                        <i class="fa fa-remove"></i>
+                    </a>
+                </div>
+
+                <div ng-if="" class="contact-list-group-div-content">
+                    {{item.displayText}}
+                    <p>{{item.description}}</p>
+                </div>
+
+                <div class="form-horizontal" role="form">
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label for="Address" class="col-xs-2 control-label sr-only">Address</label>
+                        <div class="col-xs-12">
+                            <textarea type="text" class="form-control input-sm" name="Address" placeholder="Address" ng-model="item.address"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label for="City" class="col-xs-2 control-label sr-only">City</label>
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control input-sm" name="City" placeholder="City" ng-model="item.city" />
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label for="State" class="col-xs-2 control-label sr-only">State</label>
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control input-sm" name="State" placeholder="State" ng-model="item.state" />
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label for="zipCode" class="col-xs-2 control-label sr-only">Zip Code</label>
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control input-sm" name="zipCode" placeholder="Zip Code" ng-model="item.zipCode" />
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label for="addressTypeName" class="col-xs-2 control-label sr-only">address Type</label>
+                        <div class="col-xs-12">
+                            <select class="form-control input-sm" required ng-model="item.adressType"
+                                    ng-options="option.id as option.name for option in types"
+                                    name="addressTypeName"></select>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 8px;">
+                        <div class="btn-group col-xs-12">
+                            <a class="btn btn-info btn-xs btn-primary" ng-click="update({item: item, $event: $event})">Save</a>
+                            <a class="btn btn-info btn-xs" ng-click="cancelupdate({item: item, $event: $event});">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,67 @@
+﻿@model RankipediaOffline.Models.ProfessionalMenuViewModel
+
+<div class="col-sm-3 mgn-btm-lft-nav">
+    <div class="row">
+        <div>
+            <div class="lft-nav-bg">
+                <div class="lft-nav-bg-ct">
+                    <ul class="left-menu">
+                        @if (Model.HasProfileBriefMenu)
+                        {
+                            <li class="icn1">@Html.ActionLink("Profile Brief", "Profile", "Home")</li>
+                        }
+                        @if (Model.HasAboutMenu)
+                        {
+                            <li class="icn2">@Html.ActionLink("About", "About", "Home")</li>
+                        }
+                        @if (Model.HasBusinessDetailMenu)
+                        {
+                            <li class="icn3">@Html.ActionLink("Business Detail", "BusinessDetail", "Home")</li>
+                        }
+                        @if (Model.HasPortfolioMenu)
+                        {
+                            <li class="icn4">@Html.ActionLink("Portfolio", "Portfolio", "Home")</li>
+                        }
+                        @if (Model.HasSpecialOffersMenu)
+                        {
+                            <li class="icn5">@Html.ActionLink("Special Offers", "SpecialOffers", "Home")</li>
+                        }
+                        @if (Model.HasReviewsMenu)
+                        {
+                            <li class="icn6">@Html.ActionLink("Reviews", "Reviews", "Home")</li>
+                        }
+                        @if (Model.HasTestimonialsMenu)
+                        {
+                            <li class="icn7">@Html.ActionLink("Testimonials", "Testimonials", "Home")</li>
+                        }
+
+                        <li class="icn8">@Html.ActionLink("Rankipedia Shield", "Shield", "Home")</li>
+
+
+                        <li class="icn9">@Html.ActionLink("Upgrade Now", "Upgrade", "Home")</li>
+
+                        @if (Model.HasContactMenu)
+                        {
+                            <li class="icn9">@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        }
+                    </ul>
+                </div>
+                <div class="lft-nav-sm shadow">
+                    <ul id="sideMenus" class="arr-st">
+                        <li data-for="Profile"></li>
+                        <li data-for="About"></li>
+                        <li data-for="BusinessDetail"></li>
+                        <li data-for="Portfolio"></li>
+                        <li data-for="SpecialOffers"></li>
+                        <li data-for="Reviews"></li>
+                        <li data-for="Testimonials"></li>
+                        <li data-for="Shield"></li>
+                        <li data-for="Upgrade"></li>
+                        <li data-for="Contact"></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

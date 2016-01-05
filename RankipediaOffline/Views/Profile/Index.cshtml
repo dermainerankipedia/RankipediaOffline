@@ -1,0 +1,176 @@
+﻿@using System.Reflection
+@using Microsoft.Web.Mvc
+@using RankipediaOffline.Controllers
+@using RankipediaOffline.Helpers
+@model RankipediaOffline.Models.ProfessionalViewModel
+
+
+<div class="row" ng-cloak ng-controller="profileController">
+    <div class="col-sm-3 mgn-btm-lft-nav">
+        <div id="profileSidebarNav" class="sidebar-nav">
+            <div class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <span class="visible-xs navbar-brand">Sidebar menu</span>
+                </div>
+
+                <div ng-cloak class="lft-nav-bg">
+                    <div class="navbar-collapse collapse sidebar-navbar-collapse lft-nav-bg-ct ">
+                        <ul class="left-menu">
+                            <li ng-if="model.menuViewModel.hasProfileBriefMenu">
+                                <div class="block">
+                                    <a href="" ng-click="showProfileBrief()">
+                                        <div class="inline-center-text leftmenu-content">
+                                            <span>{{model.resources.profileBriefText}}</span>
+                                        </div>
+                                        <div class="inline-image icn1 leftmenu-content"></div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li ng-if="model.menuViewModel.hasAboutMenu">
+                                <a href="" ng-click="showAbout()">
+                                    <div class="block">
+                                        <div class="inline-center-text leftmenu-content">
+                                            <span>{{model.resources.aboutText}}</span>
+                                        </div>
+                                        <div class="inline-image icn2 leftmenu-content"></div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li ng-if="model.menuViewModel.hasBusinessDetailMenu">
+                                <a href="" ng-click="showBusnessDetail()">
+                                    <div class="block">
+                                        <div class="inline-center-text leftmenu-content">
+                                            <span>{{model.resources.businessDetailText}}</span>
+                                        </div>
+                                        <div class="inline-image icn3 leftmenu-content"></div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li ng-if="model.menuViewModel.hasPortfolioMenu">
+                                <a href="" ng-click="showPortfolio()">
+                                    <div class="block">
+                                        <div class="inline-center-text leftmenu-content">
+                                            <span>{{model.resources.portfolioText}}</span>
+                                        </div>
+                                        <div class="inline-image icn4 leftmenu-content"></div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li ng-if="model.menuViewModel.hasSpecialOffersMenu">
+                                <a href="" ng-click="showSpecialOffers()">
+                                    <div class="block">
+                                        <div class="inline-center-text leftmenu-content">
+                                            <span>{{model.resources.specialOffersText}}</span>
+                                        </div>
+                                        <div class="inline-image icn5 leftmenu-content"></div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li ng-if="model.menuViewModel.hasReviewsMenu">
+                                <a href="" ng-click="showReviews()">
+                                    <div class="block">
+                                        <div class="inline-center-text leftmenu-content">
+                                            <span>{{model.resources.reviewsText}}</span>
+                                        </div>
+                                        <div class="inline-image icn6 leftmenu-content"></div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li ng-if="model.menuViewModel.hasTestimonialsMenu">
+                                <a href="" ng-click="showTestimonials()">
+                                    <div class="block">
+                                        <div class="inline-center-text leftmenu-content">
+                                            <span>{{model.resources.testimonialsText}}</span>
+                                        </div>
+                                        <div class="inline-image icn7 leftmenu-content"></div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" ng-click="showRankipediaShield()">
+                                    <div class="block">
+                                        <div class="inline-center-text leftmenu-content">
+                                            <span>{{model.resources.rankipediaShieldText}}</span>
+                                        </div>
+                                        <div class="inline-image icn8 leftmenu-content"></div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" ng-click="showUpgradeNow()">
+                                    <div class="block">
+                                        <div class="inline-center-text leftmenu-content">
+                                            <span>{{model.resources.upgradeNowText}}</span>
+                                        </div>
+                                        <div class="inline-image icn9 leftmenu-content"></div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li ng-if="model.menuViewModel.hasContactMenu">
+                                <a href="" ng-click="showContact()">
+                                    <div class="block">
+                                        <div class="inline-center-text leftmenu-content">
+                                            <span>{{model.resources.contactText}}</span>
+                                        </div>
+                                        <div class="inline-image icn10 leftmenu-content"></div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div><!--/.nav-collapse -->
+                    <div class="lft-nav-sm shadow">
+                        <ul id="sideMenus" class="arr-st">
+                            <li data-for="Profile" ng-class="{'active-cls': profileBriefIsActive}"></li>
+                            <li data-for="About" ng-class="{'active-cls': aboutIsActive}"></li>
+                            <li data-for="BusinessDetail" ng-class="{'active-cls': busnessDetailIsActive}"></li>
+                            <li data-for="Portfolio" ng-class="{'active-cls': portfolioIsActive}"></li>
+                            <li data-for="SpecialOffers" ng-class="{'active-cls': specialOffersIsActive}"></li>
+                            <li data-for="Reviews" ng-class="{'active-cls': reviewsIsActive}"></li>
+                            <li data-for="Testimonials" ng-class="{'active-cls': testimonialsIsActive}"></li>
+                            <li data-for="Shield" ng-class="{'active-cls': rankipediaShieldIsActive}"></li>
+                            <li data-for="Upgrade" ng-class="{'active-cls': upgradeNowIsActive}"></li>
+                            <li data-for="Contact" ng-class="{'active-cls': contactIsActive}"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-9 padd-lft-sb-cstm" style="padding-bottom: 40px;">
+        <div ng-view class=""></div>
+    </div>
+</div>
+
+
+
+@section scripts
+{
+    <script>
+    var createAddressUrl = '@(Html.BuildUrlFromExpression<ProfileController>(r => r.CreateAddress(null)))';
+    var updateAddressUrl = '@(Html.BuildUrlFromExpression<ProfileController>(r => r.UpdateAddress(null)))';
+    var deleteAddressUrl = '@(Html.BuildUrlFromExpression<ProfileController>(r => r.DeleteAddress(0)))';
+    var createPhoneUrl = '@(Html.BuildUrlFromExpression<ProfileController>(r => r.CreatePhone(null)))';
+    var updatePhoneUrl = '@(Html.BuildUrlFromExpression<ProfileController>(r => r.UpdatePhone(null)))';
+    var deletePhoneUrl = '@(Html.BuildUrlFromExpression<ProfileController>(r => r.DeletePhone(0)))';
+
+    window.rankipediaApp.constant('profileConfig', {
+        model: @Html.JsonFor(Model),
+        createAddressUrl: createAddressUrl,
+        updateAddressUrl: updateAddressUrl,
+        deleteAddressUrl: deleteAddressUrl,
+        createPhoneUrl: createPhoneUrl,
+        updatePhoneUrl: updatePhoneUrl,
+        deletePhoneUrl: deletePhoneUrl
+    });
+    </script>
+
+
+}
+

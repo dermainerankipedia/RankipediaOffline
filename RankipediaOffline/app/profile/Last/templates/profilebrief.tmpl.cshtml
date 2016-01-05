@@ -1,0 +1,497 @@
+﻿
+<div class="row">
+    <div class="col-sm-12 padd-lft-sb padd-tp-cstm mgn-btm-ct">
+        <div class="ct-title ">
+            <div>
+                Profile Brief
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="crop-avatar-profile">
+
+    <div class="row">
+        <div class="col-sm-12 profile-con">
+            <div class="">
+                <div class="col-sm-3">
+                    <div class="row">
+                        <div class="col-sm-12 img-prof">
+                            <div class="row avatar-view" title="Change the Profile Photo">
+                                <img ng-src="{{model.profileViewModel.profileBriefViewModel.profilePhoto}}" class="img-thumbnail" alt="Avatar" />
+                            </div>
+                        </div>
+                        <div class="col-sm-12 social-icns">
+                            @*<img src="@Rankipedia.Utilities.Helpers.StaticImage(Url,"fb-icn.png")" />
+                                <img src="@Rankipedia.Utilities.Helpers.StaticImage(Url,"tw-icn.png")" />
+                                <img src="@Rankipedia.Utilities.Helpers.StaticImage(Url,"ggl-icn.png")" />
+                                <img src="@Rankipedia.Utilities.Helpers.StaticImage(Url,"pin.png")" />
+                                <img src="@Rankipedia.Utilities.Helpers.StaticImage(Url,"in.png")" />
+                                <img src="@Rankipedia.Utilities.Helpers.StaticImage(Url,"insta.png")" />
+                                <img src="@Rankipedia.Utilities.Helpers.StaticImage(Url,"mail.png")" />*@
+                            <div class="col-sm-12 nopadding">
+                                <div class="col-sm-6 ">
+                                    <div class="btn follow">
+                                        Follow
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 ">
+                                    <div class="btn follow endorse">
+                                        Endorse
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 brdr-rght-one">
+                    <div class="row">
+                        <div class="col-sm-12 col-sm-offset-0">
+                            <div class="prof-title pull-left">
+                                @*<a ng-if="model.isEditable" href='#' editable-text="model.profileViewModel.profileBriefViewModel.memberName">{{ model.profileViewModel.profileBriefViewModel.memberName }}</a>*@
+                                <p  class="form-control-static">{{ model.profileViewModel.profileBriefViewModel.memberName }} </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12  col-sm-offset-0">
+                            <div class="prof-desc">
+                                @*<a ng-if="model.isEditable" href='#' editable-text="model.profileViewModel.profileBriefViewModel.degrees">{{ model.profileViewModel.profileBriefViewModel.degrees  }}</a>*@
+                                <p ng-class="" class="form-control-static">{{ model.profileViewModel.profileBriefViewModel.degrees || 'empty' }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12  col-sm-offset-0">
+                            <div class="prof-desc">                                
+                                <p ng-class="" class="form-control-static">{{ model.profileViewModel.profileBriefViewModel.jobStatus || 'empty' }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12  col-sm-offset-0">
+                            <div class="prof-year">
+                                <div class="yrs-prctc">Years in {{model.ProfileViewModel.profileBriefViewModel.businessIsCalled}} : </div>
+                                <div class="years yrs-flt basics">
+                                    <p ng-class="" class="form-control-static prof-data-year">{{ model.profileViewModel.profileBriefViewModel.yearsInPractice }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12  col-sm-offset-0">
+                            <div class="prof-desc contact-list-div">
+                                <address-contact-list editable="model.isEditable" items="model.profileViewModel.profileBriefViewModel.addressViewModels" isopen="false"
+                                                      new-item="createModel"
+                                                      types="model.addressTypes"
+                                                      on-before-create="onBeforeCreateAddress($event)"
+                                                      on-create="onCreateAddress(item, $event)"
+                                                      on-cancel-create="onCancelCreateAddress(item, $event)"
+                                                      on-before-update="onBeforeUpdateAddress(item)"
+                                                      on-update="onUpdateAddress(item, $event)"
+                                                      on-cancel-update="onCancelUpdateAddress(item, $event)"
+                                                      on-delete="onDeleteAddress(item, $event)"></address-contact-list>
+
+                                <phone-contact-list editable="model.isEditable" items="model.profileViewModel.profileBriefViewModel.phoneViewModels" isopen="false"
+                                                    new-item="createModel"
+                                                    types="model.phoneTypes"
+                                                    on-before-create="onBeforeCreatePhone($event)"
+                                                    on-create="onCreatePhone(item, $event)"
+                                                    on-cancel-create="onCancelCreatePhone(item, $event)"
+                                                    on-before-update="onBeforeUpdatePhone(item)"
+                                                    on-update="onUpdatePhone(item, $event)"
+                                                    on-cancel-update="onCancelUpdatePhone(item, $event)"
+                                                    on-delete="onDeletePhone(item, $event)"></phone-contact-list>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 row col-sm-offset-0">
+                        <div class="specialty-with-heading">
+                            <h3>
+                                Specialty
+                                <span ng-if="model.isEditable" class="pull-right">
+                                    <button class="btn btn-xs btn-primary">
+                                        <i class="fa fa-plus"></i>
+                                        <span class="caret"></span>
+                                    </button>
+                                </span>
+                            </h3>
+                            <ul class="prof-list">
+                                <li class="speciality-item" ng-repeat="specialty in model.profileViewModel.profileBriefViewModel.specialtyViewModels">
+                                    <span href="#">{{specialty.name}}</span>
+                                    <span ng-if="model.isEditable" class="pull-right">
+                                        <button class="btn btn-xs btn-primary" data-professionalarealevel="specialty.professionalAreaLevel" data-industryid="{{specialty.id}}" data-specialityid="{{specialty.specialtyId}}" data-subspecialityid="{{specialty.subSpecialtyId}}">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="prof-data-name rankingperiodontics">
+                                    <select class="hiddendropdown">
+                                        @*@if (Model.ProfessionalAreas.Industries != null)
+                                            {
+                                                foreach (Industries industries in Model.ProfessionalAreas.Industries)
+                                                {
+                                                    if (industries.Specialties != null)
+                                                    {
+                                                        foreach (Specialties specialities in industries.Specialties)
+                                                        {
+                                                            if (specialities.SubSpecialties != null)
+                                                            {
+                                                                foreach (SubSpecialties subSpecialties in specialities.SubSpecialties)
+                                                                {
+                                            <text>
+                                                <option data-industryid="@(industries.ID)" data-specialityid="@(specialities.ID)" data-subspecialityid="@(subSpecialties.ID)" value="@(subSpecialties.ID)">Ranking for @subSpecialties.Name</option>
+
+                                            </text>
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                            <text>
+                                                <option data-industryid="@(industries.ID)" data-specialityid="@(specialities.ID)" data-subspecialityid="0" value="@(specialities.ID)">Ranking for @specialities.Name</option>
+                                            </text>
+                                                            }
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                            <text>
+                                                <option data-industryid="@(industries.ID)" data-specialityid="0" data-subspecialityid="0" value="@(industries.ID)">Ranking for @industries.Name</option>
+
+                                            </text>
+                                                    }
+                                                }
+                                            }*@
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="prof-data prof-data-rsp">
+                                    <span class="animatecount" data-uppervalue="10000" data-lowervalue="2500" data-step="10">0</span>
+                                </div>
+                                <div class="prof-data-name">
+                                    National Ranking
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="prof-data prof-data-rsp">
+                                    <span class="animatecount" data-uppervalue="100000" data-lowervalue="75000" data-step="10">0</span>
+                                </div>
+                                <div class="prof-data-name">
+                                    <select class="countydropdown hiddendropdown"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 brdr">
+                            <div class="row ">
+                                <div class="prof-data prof-data-rsp rankingpercentagediv">
+                                    Top <span class="animatecount" data-uppervalue="100" data-lowervalue="5" data-step="1">0</span> %
+                                </div>
+                                <div class="prof-data-name">
+                                    Ranking
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="row paddin paddin-dl">
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="prof-data-one">
+                                            Rankipedia
+                                            @*<img class="ui-note" title="Rankipedia Ratings" src="@Rankipedia.Utilities.Helpers.StaticImage(Url,"i.png")" />*@
+                                        </div>
+                                        <div class="prof-desc">
+                                            @*<img src="@Rankipedia.Utilities.Helpers.StaticImage(Url, "/RatingIcons/R-s/R-4.5.png")" />*@
+                                            <span class="reviewerscount">(106 Reviewers)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="prof-data-one">
+                                            Quality
+                                            @*<img class="ui-note" title="Quality Ratings" src="@Rankipedia.Utilities.Helpers.StaticImage(Url,"i.png")" />*@
+                                        </div>
+                                        <div class="prof-desc">
+                                            @*<img src="@Rankipedia.Utilities.Helpers.StaticImage(Url, "/RatingIcons/stars/star-4.5.png")" />*@
+                                            <span class="reviewerscount">(106 Reviewers)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="prof-data-one">
+                                            Satisfaction
+                                            @*<img class="ui-note" title="Satisfaction Ratings" src="@Rankipedia.Utilities.Helpers.StaticImage(Url,"i.png")" />*@
+                                        </div>
+                                        <div class="prof-desc">
+                                            @*<img src="@Rankipedia.Utilities.Helpers.StaticImage(Url, "/RatingIcons/hearts/heart-3.0.png")" />*@
+                                            <span class="reviewerscount">(106 Reviewers)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="prof-data-one">
+                                            Value
+                                            @*<img class="ui-note" title="Value Ratings" src="@Rankipedia.Utilities.Helpers.StaticImage(Url,"i.png")" />*@
+                                        </div>
+                                        <div class="prof-desc">
+                                            @*<img src="@Rankipedia.Utilities.Helpers.StaticImage(Url, "/RatingIcons/diamonds/diamond-5.0.png")" />*@
+                                            <span class="reviewerscount">(106 Reviewers)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="prof-data-one">
+                                            Price
+                                            @*<img class="ui-note" title="Price Ratings" src="@Rankipedia.Utilities.Helpers.StaticImage(Url,"i.png")" />*@
+                                        </div>
+                                        <div class="prof-desc">
+                                            @*<img src="@Rankipedia.Utilities.Helpers.StaticImage(Url, "/RatingIcons/dollars/dollar-2.0.png")" />*@
+                                            <span class="reviewerscount">(106 Reviewers)</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cf">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="prof-stat-pdd">
+                <div class="col-sm-4">
+                    <div class="row  brdr-rght-one brdr-bottom">
+                        <div class="prof-num">
+                            117,216
+                        </div>
+                        <div class="prof-num-desc">
+                            Dentists Nationwide
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="row brdr-rght-one brdr-bottom">
+                        <div class="prof-num">
+                            2400
+                        </div>
+                        <div class="prof-num-desc">
+                            Dentists San Diego County
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="row">
+                        <div class="prof-num">
+                            12
+                        </div>
+                        <div class="prof-num-desc">
+                            Dental Specialties
+                        </div>
+                    </div>
+                </div>
+                <div class="cf">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row1">
+        <div class="col-sm-12">
+            <div class="row">
+                <center>
+                    <div id="morrisbargraph" class="graph">
+                    </div>
+                </center>
+                <div class="cf">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row1">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class=" profile-con">
+                    <div class="col-sm-3">
+                        <div class="row brdr-rght-prof">
+                            <div class="col-sm-12" style="background-color: #555;">
+                                <div class="row container-pro">
+                                    <div class="col-sm-5 pro">
+                                        <div class="row ">
+                                            @*<img src="@Rankipedia.Utilities.Helpers.StaticImage(Url,"profile1.jpg")" />*@
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-7 descrip">
+                                        <div class="row ">
+                                            <div>
+                                                <div class="prof1-headn">
+                                                    John Cole
+                                                </div>
+                                                <div class="prof1-desgn">
+                                                    DMD
+                                                </div>
+                                            </div>
+                                            <div class="prof1-desc">
+                                                7500<br />
+                                                San Diego Country<br />
+                                                Ranking
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <input type="checkbox" checked="checked" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="row brdr-rght-prof">
+                            <div class="col-sm-12">
+                                <div class="row profiles-cont container-pro">
+                                    <div class="col-sm-5 pro">
+                                        <div class="row ">
+                                            @*<img src="@Rankipedia.Utilities.Helpers.StaticImage(Url,"profile2.jpg")" />*@
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-7 descrip">
+                                        <div class="row ">
+                                            <div>
+                                                <div class="prof1-headn">
+                                                    John Cole
+                                                </div>
+                                                <div class="prof1-desgn">
+                                                    DMD
+                                                </div>
+                                            </div>
+                                            <div class="prof1-desc">
+                                                7500<br />
+                                                San Diego Country<br />
+                                                Ranking
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <input type="checkbox" checked="checked" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="row brdr-rght-prof">
+                            <div class="col-sm-12" style="background-color: #555;">
+                                <div class="row container-pro">
+                                    <div class="col-sm-5 pro">
+                                        <div class="row ">
+                                            @*<img src="@Rankipedia.Utilities.Helpers.StaticImage(Url,"profile3.jpg")" />*@
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-7 descrip">
+                                        <div class="row ">
+                                            <div>
+                                                <div class="prof1-headn">
+                                                    John Cole
+                                                </div>
+                                                <div class="prof1-desgn">
+                                                    DMD
+                                                </div>
+                                            </div>
+                                            <div class="prof1-desc">
+                                                7500<br />
+                                                San Diego Country<br />
+                                                Ranking
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <input type="checkbox" checked="checked" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="row brdr-rght-prof">
+                            <div class="col-sm-12" style="background-color: #EEEEEE;">
+                                <div class="row container-pro">
+                                    <div class="col-sm-5 pro">
+                                        <div class="row ">
+                                            @*<img src="@Rankipedia.Utilities.Helpers.StaticImage(Url,"profile4.jpg")" />*@
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-7 descrip">
+                                        <div class="row padding-20 ">
+                                            <div class="txt">
+                                                Quality <span class="reviewerscount">(106 Reviewers)</span><br />
+                                                @*<img src="@Rankipedia.Utilities.Helpers.StaticImage(Url,"stars.png")" />*@
+                                            </div>
+                                            <div class="txt">
+                                                Satisfaction (96 Reviewers)<br />
+                                                @*<img src="@Rankipedia.Utilities.Helpers.StaticImage(Url,"hearts.png")" />*@
+                                            </div>
+                                            <div class="txt">
+                                                Price (87 Reviewers)<br />
+                                                @*<img src="@Rankipedia.Utilities.Helpers.StaticImage(Url,"dollar.png")" />*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <input type="checkbox" checked="checked" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="row follow">
+                            Compare
+                        </div>
+                    </div>
+                    <div class="cf">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cf">
+        </div>
+    </div>
+
+    <!-- Loading state -->
+    <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
+    
+    <crop-avatar-upload data-avatar-container-name="crop-avatar-profile"></crop-avatar-upload>
+</div>
+
